@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wporg-events/venue-detail",
+	"title": "Venue Detail",
+	"category": "widgets",
+	"description": "Displays reusable WordPress community event venue details.",
+	"textdomain": "wporg",
+	"supports": {
+		"html": false
+	},
+	"render": "file:./render.php"
+}

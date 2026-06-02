@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wporg-events/event-directory",
+	"title": "Event Directory",
+	"category": "widgets",
+	"description": "Displays public WordPress community events.",
+	"textdomain": "wporg",
+	"supports": {
+		"html": false,
+		"interactivity": true
+	},
+	"viewScriptModule": "@wporg/events-theme",
+	"render": "file:./render.php"
+}

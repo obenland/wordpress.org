@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wporg-events/group-directory",
+	"title": "Group Directory",
+	"category": "widgets",
+	"description": "Displays public WordPress community groups.",
+	"textdomain": "wporg",
+	"supports": {
+		"html": false,
+		"interactivity": true
+	},
+	"viewScriptModule": "@wporg/events-theme",
+	"render": "file:./render.php"
+}

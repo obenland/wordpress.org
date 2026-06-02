@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wporg-events/event-detail",
+	"title": "Event Detail",
+	"category": "widgets",
+	"description": "Displays event details and RSVP controls.",
+	"textdomain": "wporg",
+	"supports": {
+		"html": false,
+		"interactivity": true
+	},
+	"viewScriptModule": "@wporg/events-theme",
+	"render": "file:./render.php"
+}

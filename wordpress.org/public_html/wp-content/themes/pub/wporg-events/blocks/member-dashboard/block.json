@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wporg-events/member-dashboard",
+	"title": "Member Dashboard",
+	"category": "widgets",
+	"description": "Displays current-user RSVPs and group memberships.",
+	"textdomain": "wporg",
+	"supports": {
+		"html": false,
+		"interactivity": true
+	},
+	"viewScriptModule": "@wporg/events-theme",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,116 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"palette": [
+				{
+					"color": "#ffffff",
+					"name": "White",
+					"slug": "white"
+				},
+				{
+					"color": "#f6f7f7",
+					"name": "Light Grey",
+					"slug": "light-grey"
+				},
+				{
+					"color": "#23282d",
+					"name": "Charcoal",
+					"slug": "charcoal"
+				},
+				{
+					"color": "#1e1e1e",
+					"name": "Ink",
+					"slug": "ink"
+				},
+				{
+					"color": "#3858e9",
+					"name": "WordPress Blue",
+					"slug": "wp-blue"
+				},
+				{
+					"color": "#008a20",
+					"name": "Community Green",
+					"slug": "community-green"
+				}
+			]
+		},
+		"layout": {
+			"contentSize": "760px",
+			"wideSize": "1160px"
+		},
+		"spacing": {
+			"spacingSizes": [
+				{
+					"name": "Small",
+					"size": "12px",
+					"slug": "small"
+				},
+				{
+					"name": "Medium",
+					"size": "24px",
+					"slug": "medium"
+				},
+				{
+					"name": "Large",
+					"size": "40px",
+					"slug": "large"
+				}
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "Inter, sans-serif",
+					"name": "Inter",
+					"slug": "inter"
+				},
+				{
+					"fontFamily": "\"EB Garamond\", serif",
+					"name": "EB Garamond",
+					"slug": "eb-garamond"
+				}
+			],
+			"fluid": false
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "#ffffff",
+			"text": "#1e1e1e"
+		},
+		"elements": {
+			"button": {
+				"border": {
+					"radius": "2px"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "#3858e9"
+				}
+			}
+		},
+		"spacing": {
+			"blockGap": "24px"
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|inter",
+			"letterSpacing": "0"
+		}
+	},
+	"templateParts": [
+		{
+			"area": "header",
+			"name": "header",
+			"title": "Header"
+		},
+		{
+			"area": "footer",
+			"name": "footer",
+			"title": "Footer"
+		}
+	]
+}

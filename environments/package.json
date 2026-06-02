@@ -6,6 +6,10 @@
 		"node": ">=20"
 	},
 	"scripts": {
+		"community-events:env": "wp-env --config community-events/.wp-env.json",
+		"community-events:site:setup": "npm run community-events:env -- run cli wp plugin activate wporg-community-events && npm run community-events:env -- run cli wp theme activate wporg-events && npm run community-events:env -- run cli wp eval 'require WP_CONTENT_DIR . \"/themes/wporg-events/bin/seed.php\";'",
+		"community-events:test:setup": "npm run community-events:env -- run tests-cli composer require --dev phpunit/phpunit:^9.6 yoast/phpunit-polyfills:^2.0 --working-dir=/wordpress-phpunit --with-all-dependencies",
+		"community-events:test": "npm run community-events:env -- run tests-cli --env-cwd=wp-content/plugins/wporg-community-events sh -c 'find tests -name \"class-*-test.php\" -print0 | xargs -0 -n1 /wordpress-phpunit/vendor/bin/phpunit -c phpunit.xml.dist'",
 		"plugins:env": "wp-env --config plugin-directory/.wp-env.json",
 		"plugins:import": "npm run plugins:env -- run cli -- php wp-content/plugins/plugin-directory/bin/import-plugin.php --create --plugin",
 		"plugins:refresh": "npm run plugins:env -- run cli -- wp option delete wporg_env_imported && npm run plugins:env -- run cli wp eval-file wp-content/env-bin/import-plugins.php",

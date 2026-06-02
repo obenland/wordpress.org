@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wporg-events/page-header",
+	"title": "Page Header",
+	"category": "widgets",
+	"description": "Displays a translated page header for WordPress.org Events templates.",
+	"textdomain": "wporg",
+	"attributes": {
+		"variant": {
+			"type": "string",
+			"default": "front"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"render": "file:./render.php"
+}

@@ -1,0 +1,1092 @@
+/*
+Theme Name: Events
+Theme URI: https://wordpress.org/
+Author: WordPress.org
+Author URI: https://wordpress.org/
+Description: Block theme for WordPress.org community groups, events, RSVPs, and member dashboards.
+Version: 0.1.0
+Requires at least: 6.9
+Tested up to: 6.9
+Requires PHP: 8.4
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Text Domain: wporg
+Template: wporg-parent-2021
+*/
+
+:root {
+	--wporg-events-accent-canvas: #effaf1;
+	--wporg-events-blue: var(--wp--preset--color--blueberry-1, #3858e9);
+	--wporg-events-blue-dark: var(--wp--preset--color--deep-blueberry, #1f35b4);
+	--wporg-events-border: var(--wp--preset--color--light-grey-1, #dcdcde);
+	--wporg-events-canvas: var(--wp--preset--color--light-grey-2, #f6f7f7);
+	--wporg-events-charcoal: var(--wp--preset--color--charcoal-2, #23282d);
+	--wporg-events-danger: #8a2424;
+	--wporg-events-green: #008a20;
+	--wporg-events-green-dark: #006b19;
+	--wporg-events-ink: var(--wp--preset--color--charcoal-1, #1e1e1e);
+	--wporg-events-muted: var(--wp--preset--color--charcoal-4, #646970);
+	--wporg-events-surface: #fff;
+}
+
+.wporg-events-shell *,
+.wporg-events-shell *::before,
+.wporg-events-shell *::after {
+	box-sizing: border-box;
+}
+
+body {
+	background: var(--wporg-events-surface);
+	color: var(--wporg-events-ink);
+	font-family: Inter, sans-serif;
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+a {
+	color: var(--wporg-events-blue);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.14em;
+}
+
+a:hover {
+	color: var(--wporg-events-blue-dark);
+}
+
+.wporg-events-shell {
+	min-height: 100vh;
+}
+
+.wporg-events-main {
+	margin: 0 auto;
+	max-width: 1160px;
+	padding: 48px 24px 96px;
+	width: 100%;
+}
+
+.wporg-events-hero {
+	background: var(--wporg-events-charcoal);
+	border-bottom: 1px solid #3c434a;
+	color: #fff;
+	margin: -48px calc(50% - 50vw) 64px !important;
+	max-width: none;
+	padding: 52px max(24px, calc((100vw - 1160px) / 2)) 44px;
+}
+
+.wporg-events-hero h1 {
+	color: #fff;
+	font-family: Inter, sans-serif;
+	font-size: 50px;
+	font-weight: 600;
+	letter-spacing: 0;
+	line-height: 1.2;
+	margin: 0 0 12px;
+	max-width: 860px;
+}
+
+.wporg-events-hero p {
+	color: #f6f7f7;
+	font-size: 18px;
+	line-height: 1.7;
+	margin: 0;
+	max-width: 740px;
+}
+
+.wporg-events-section {
+	margin: 56px auto 0 !important;
+	max-width: 1160px !important;
+	width: 100%;
+}
+
+.wporg-events-section + .wporg-events-section {
+	border-top: 1px solid var(--wporg-events-border);
+	padding-top: 48px;
+}
+
+.wporg-events-section__header {
+	align-items: end;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.wporg-events-section__header h2,
+.wporg-events-section__header h1 {
+	font-family: Inter, sans-serif;
+	font-size: 32px;
+	font-weight: 600;
+	line-height: 1.2;
+	margin: 0 !important;
+	margin-block: 0 !important;
+}
+
+.wporg-events-section__header p {
+	color: var(--wporg-events-muted);
+	line-height: 1.55;
+	margin: 8px 0 0;
+	max-width: 680px;
+}
+
+.wporg-events-toolbar {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.wporg-events-filter-bar {
+	background: var(--wporg-events-surface);
+	border: 1px solid var(--wporg-events-border);
+	border-radius: 2px;
+	display: grid;
+	gap: 12px;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+	margin: 0 0 24px;
+	padding: 18px;
+}
+
+.wporg-events-filter-bar label {
+	min-width: 0;
+}
+
+.wporg-events-input {
+	background: var(--wporg-events-surface);
+	border: 1px solid #8c8f94;
+	border-radius: 2px;
+	color: var(--wporg-events-ink);
+	font: inherit;
+	min-height: 44px;
+	min-width: min(280px, 100%);
+	padding: 8px 12px;
+	width: 100%;
+}
+
+.wporg-events-input:focus {
+	border-color: var(--wporg-events-blue);
+	box-shadow: 0 0 0 1px var(--wporg-events-blue);
+	outline: 2px solid transparent;
+}
+
+select.wporg-events-input[multiple] {
+	min-height: 108px;
+}
+
+.wporg-events-segmented {
+	background: var(--wporg-events-surface);
+	border: 1px solid var(--wporg-events-border);
+	border-radius: 2px;
+	display: inline-flex;
+	overflow: hidden;
+}
+
+.wporg-events-button,
+.wporg-events-segmented button {
+	background: var(--wporg-events-surface);
+	border: 0;
+	border-right: 1px solid var(--wporg-events-border);
+	color: var(--wporg-events-ink);
+	cursor: pointer;
+	font: inherit;
+	font-weight: 600;
+	line-height: 1.3;
+	min-height: 44px;
+	padding: 10px 16px;
+}
+
+.wporg-events-segmented button:last-child {
+	border-right: 0;
+}
+
+.wporg-events-button {
+	background: var(--wporg-events-blue);
+	border: 1px solid var(--wporg-events-blue);
+	border-radius: 2px;
+	color: #fff;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.wporg-events-button--link {
+	align-items: center;
+	display: inline-flex;
+	text-decoration: none;
+}
+
+.wporg-events-button--secondary {
+	background: var(--wporg-events-surface);
+	border-color: var(--wporg-events-danger);
+	color: var(--wporg-events-danger);
+}
+
+.wporg-events-button:hover,
+.wporg-events-button.is-active,
+.wporg-events-segmented button:hover,
+.wporg-events-segmented button.is-active {
+	background: var(--wporg-events-blue-dark);
+	border-color: var(--wporg-events-blue-dark);
+	color: #fff;
+}
+
+.wporg-events-button--secondary:hover {
+	background: var(--wporg-events-danger);
+	border-color: var(--wporg-events-danger);
+	color: #fff;
+}
+
+.wporg-events-button:disabled {
+	cursor: progress;
+	opacity: 0.65;
+}
+
+.wporg-events-grid {
+	display: grid;
+	gap: 16px;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+	margin: 0;
+	padding: 0;
+}
+
+.wporg-events-card {
+	background: var(--wporg-events-surface);
+	border: 1px solid var(--wporg-events-border);
+	border-radius: 2px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	list-style: none;
+	padding: 24px;
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease;
+}
+
+.wporg-events-card:hover {
+	background: #fbfbfb;
+	border-color: #8c8f94;
+}
+
+.wporg-events-event-directory .wporg-events-grid {
+	border-top: 1px solid var(--wporg-events-border);
+	display: block;
+}
+
+.wporg-events-card--event {
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	padding: 28px 0;
+}
+
+.wporg-events-card--event:hover {
+	background: #fff;
+}
+
+.wporg-events-card h3 {
+	font-family: Inter, sans-serif;
+	font-size: 21px;
+	font-weight: 600;
+	line-height: 1.3;
+	margin: 0 !important;
+	margin-block: 0 !important;
+}
+
+.wporg-events-card h3 a {
+	text-decoration: none;
+}
+
+.wporg-events-card:hover h3 a {
+	text-decoration: underline;
+}
+
+.wporg-events-card .wporg-events-button {
+	align-self: flex-start;
+	margin-top: auto;
+}
+
+.wporg-events-card--event .wporg-events-button {
+	justify-self: start;
+	min-width: 132px;
+}
+
+.wporg-events-card p {
+	color: var(--wporg-events-muted);
+	line-height: 1.55;
+	margin: 0;
+}
+
+.wporg-events-card__layout {
+	display: flex;
+	gap: 18px;
+	min-width: 0;
+}
+
+.wporg-events-card__body {
+	display: grid;
+	flex: 1;
+	gap: 14px;
+	min-width: 0;
+}
+
+.wporg-events-date-badge {
+	background: var(--wporg-events-surface);
+	border: 1px solid var(--wporg-events-border);
+	border-top: 3px solid var(--wporg-events-green);
+	color: var(--wporg-events-ink);
+	display: grid;
+	flex: 0 0 64px;
+	height: 72px;
+	justify-items: center;
+	line-height: 1;
+	padding: 8px 6px;
+	text-align: center;
+	width: 64px;
+}
+
+.wporg-events-date-badge__month {
+	color: var(--wporg-events-muted);
+	font-size: 13px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.wporg-events-date-badge__day {
+	font-family: Inter, sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+}
+
+.wporg-events-meta {
+	color: var(--wporg-events-muted);
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 14px;
+	gap: 8px 16px;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+}
+
+.wporg-events-meta li {
+	list-style: none;
+}
+
+.wporg-events-detail {
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	padding: 0;
+}
+
+.wporg-events-section [hidden],
+.wporg-events-detail [hidden] {
+	display: none !important;
+}
+
+.wporg-events-detail h1 {
+	font-family: "EB Garamond", serif;
+	font-size: 64px;
+	font-weight: 400;
+	letter-spacing: 0;
+	line-height: 1.08;
+	margin: 0 0 18px;
+	max-width: 860px;
+}
+
+.wporg-events-detail__body {
+	align-items: start;
+	display: grid;
+	gap: 48px;
+	grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+	margin-top: 40px;
+}
+
+.wporg-events-panel {
+	background: var(--wporg-events-surface);
+	border: 1px solid var(--wporg-events-border);
+	border-radius: 2px;
+	padding: 24px;
+}
+
+.wporg-events-panel-stack {
+	display: grid;
+	gap: 20px;
+}
+
+.wporg-events-group-detail .wporg-events-detail__body > div:last-child {
+	align-content: start;
+	display: grid;
+	gap: 20px;
+}
+
+.wporg-events-panel h2,
+.wporg-events-panel h3 {
+	font-family: Inter, sans-serif;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.3;
+	margin: 0 0 12px !important;
+	margin-block: 0 12px !important;
+}
+
+.wporg-events-panel p {
+	color: var(--wporg-events-muted);
+	line-height: 1.55;
+}
+
+.wporg-events-map {
+	display: grid;
+	gap: 8px;
+}
+
+.wporg-events-map iframe {
+	aspect-ratio: 4 / 3;
+	border: 1px solid #dcdcde;
+	border-radius: 2px;
+	display: block;
+	width: 100%;
+}
+
+.wporg-events-map--compact {
+	margin-top: 16px;
+}
+
+.wporg-events-map--compact iframe {
+	aspect-ratio: 16 / 9;
+}
+
+.wporg-events-map__link {
+	font-size: 14px;
+	margin: 0;
+}
+
+.wporg-events-suggestion {
+	margin-top: 32px;
+}
+
+.wporg-events-suggestion__header {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: space-between;
+	margin-bottom: 18px;
+}
+
+.wporg-events-suggestion__header p {
+	color: var(--wporg-events-muted);
+	margin: 0;
+}
+
+.wporg-events-review-queue {
+	border-top: 1px solid var(--wporg-events-border);
+	margin-top: 40px;
+	padding-top: 40px;
+}
+
+.wporg-events-review-list {
+	display: grid;
+	gap: 18px;
+	margin: 0;
+	padding: 0;
+}
+
+.wporg-events-review-list li {
+	list-style: none;
+}
+
+.wporg-events-review-item {
+	display: grid;
+	gap: 16px;
+}
+
+.wporg-events-review-item__summary {
+	align-items: flex-start;
+	display: flex;
+	gap: 16px;
+	justify-content: space-between;
+}
+
+.wporg-events-review-item__summary > .wporg-events-meta {
+	flex: 0 0 auto;
+}
+
+.wporg-events-review-item__description {
+	border-left: 3px solid var(--wporg-events-border);
+	color: var(--wporg-events-muted);
+	padding-left: 16px;
+}
+
+.wporg-events-review-item__description > :first-child {
+	margin-top: 0;
+}
+
+.wporg-events-review-item__description > :last-child {
+	margin-bottom: 0;
+}
+
+.wporg-events-review-form {
+	background: var(--wporg-events-canvas);
+	border: 1px solid var(--wporg-events-border);
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	padding: 16px;
+}
+
+.wporg-events-review-form label:last-of-type {
+	grid-column: 1 / -1;
+}
+
+.wporg-events-review-form .wporg-events-button {
+	justify-self: start;
+}
+
+.wporg-events-list {
+	display: grid;
+	gap: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+.wporg-events-list li {
+	list-style: none;
+}
+
+.wporg-events-form {
+	display: grid;
+	gap: 14px;
+}
+
+.wporg-events-form label {
+	display: grid;
+	gap: 4px;
+}
+
+.wporg-events-form label span {
+	color: var(--wporg-events-ink);
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.wporg-events-form h4 {
+	font-family: Inter, sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.3;
+	margin: 0 !important;
+	margin-block: 0 !important;
+}
+
+.wporg-events-form textarea {
+	resize: vertical;
+}
+
+.wporg-events-fieldset {
+	border: 1px solid var(--wporg-events-border);
+	display: grid;
+	gap: 12px;
+	margin: 0;
+	padding: 14px;
+}
+
+.wporg-events-fieldset legend {
+	color: var(--wporg-events-ink);
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	padding: 0 4px;
+}
+
+.wporg-events-rsvp-question {
+	border-top: 1px solid var(--wporg-events-border);
+	display: grid;
+	gap: 12px;
+	padding-top: 14px;
+}
+
+.wporg-events-rsvp-question:first-of-type {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.wporg-events-checkbox-label {
+	align-items: center;
+	display: flex !important;
+	gap: 8px;
+}
+
+.wporg-events-checkbox-label input {
+	margin: 0;
+}
+
+.wporg-events-inline-form {
+	align-items: end;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.wporg-events-inline-form label {
+	display: grid;
+	gap: 4px;
+}
+
+.wporg-events-inline-form label span {
+	color: var(--wporg-events-ink);
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.wporg-events-dashboard-item {
+	align-items: flex-start;
+	border-bottom: 1px solid var(--wporg-events-border);
+	display: flex;
+	gap: 16px;
+	justify-content: space-between;
+	padding-bottom: 16px;
+}
+
+.wporg-events-dashboard-item:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+.wporg-events-dashboard-item__content {
+	display: grid;
+	gap: 6px;
+	min-width: 0;
+}
+
+.wporg-events-dashboard-item__actions {
+	align-items: flex-end;
+	display: grid;
+	gap: 6px;
+	justify-items: end;
+	min-width: min(160px, 100%);
+}
+
+.wporg-events-notifications {
+	display: grid;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.wporg-events-notifications fieldset {
+	border: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 14px;
+	margin: 0;
+	padding: 0;
+}
+
+.wporg-events-notifications legend {
+	color: var(--wporg-events-ink);
+	flex-basis: 100%;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-bottom: 2px;
+	padding: 0;
+}
+
+.wporg-events-notifications label {
+	align-items: center;
+	color: var(--wporg-events-muted);
+	display: inline-flex;
+	font-size: 14px;
+	gap: 6px;
+	line-height: 1.4;
+}
+
+.wporg-events-notifications label.wporg-events-notifications__field {
+	align-items: stretch;
+	display: grid;
+	flex-basis: min(100%, 320px);
+}
+
+.wporg-events-notifications .wporg-events-button {
+	justify-self: start;
+}
+
+.wporg-events-profile {
+	align-items: center;
+	display: flex;
+	gap: 12px;
+}
+
+.wporg-events-profile-list {
+	display: grid;
+	gap: 14px 18px;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+	margin: 0;
+	padding: 0;
+}
+
+.wporg-events-profile-list li {
+	list-style: none;
+}
+
+.wporg-events-profile--managed {
+	align-items: flex-start;
+	display: grid;
+	gap: 12px;
+}
+
+.wporg-events-profile__summary {
+	align-items: center;
+	display: flex;
+	gap: 12px;
+}
+
+.wporg-events-profile img {
+	border-radius: 50%;
+	height: 44px;
+	width: 44px;
+}
+
+.wporg-events-attendee-management {
+	border-top: 1px solid var(--wporg-events-border);
+	margin-top: 16px;
+	padding-top: 16px;
+}
+
+.wporg-events-attendee-add-form {
+	border-bottom: 1px solid var(--wporg-events-border);
+	margin-bottom: 16px;
+	padding-bottom: 16px;
+}
+
+.wporg-events-attendee-row {
+	border-bottom: 1px solid var(--wporg-events-border);
+	display: grid;
+	gap: 8px;
+	padding-bottom: 14px;
+}
+
+.wporg-events-attendee-row:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+.wporg-events-attendee-row__summary {
+	align-items: center;
+	display: flex;
+	gap: 12px;
+	min-width: 0;
+}
+
+.wporg-events-attendee-row__summary img {
+	border-radius: 50%;
+	height: 44px;
+	width: 44px;
+}
+
+.wporg-events-attendee-row__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.wporg-events-attendee-row__actions .wporg-events-button {
+	font-size: 14px;
+	min-height: 36px;
+	padding: 6px 10px;
+}
+
+.wporg-events-rsvp-answers {
+	background: var(--wporg-events-canvas);
+	display: grid;
+	font-size: 14px;
+	gap: 8px;
+	margin: 0;
+	padding: 12px;
+}
+
+.wporg-events-rsvp-answers div {
+	display: grid;
+	gap: 2px;
+}
+
+.wporg-events-rsvp-answers dt {
+	color: var(--wporg-events-ink);
+	font-weight: 600;
+}
+
+.wporg-events-rsvp-answers dd {
+	color: var(--wporg-events-muted);
+	margin: 0;
+}
+
+.wporg-events-feedback {
+	border-top: 1px solid var(--wporg-events-border);
+	margin-top: 32px;
+	padding-top: 24px;
+}
+
+.wporg-events-feedback-list {
+	display: grid;
+	gap: 16px;
+	margin: 20px 0 0;
+	padding: 0;
+}
+
+.wporg-events-feedback-list li {
+	background: var(--wporg-events-surface);
+	border: 1px solid var(--wporg-events-border);
+	border-radius: 2px;
+	display: grid;
+	gap: 12px;
+	list-style: none;
+	padding: 16px;
+}
+
+.wporg-events-feedback-list__meta {
+	align-items: center;
+	display: flex;
+	gap: 12px;
+	min-width: 0;
+}
+
+.wporg-events-feedback-list__meta img {
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+}
+
+.wporg-events-feedback-list__meta span {
+	color: var(--wporg-events-muted);
+	display: block;
+	font-size: 14px;
+}
+
+.wporg-events-comments {
+	border-top: 1px solid var(--wporg-events-border);
+	margin-top: 32px;
+	padding-top: 24px;
+}
+
+.wporg-events-comment-list {
+	display: grid;
+	gap: 16px;
+	margin: 0 0 24px;
+	padding: 0;
+}
+
+.wporg-events-comment-list li {
+	list-style: none;
+}
+
+.wporg-events-comment-list .comment-body {
+	background: var(--wporg-events-surface);
+	border: 1px solid var(--wporg-events-border);
+	border-radius: 2px;
+	display: grid;
+	gap: 10px;
+	padding: 18px;
+}
+
+.wporg-events-comment-list .comment-meta {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 14px;
+	gap: 8px 12px;
+}
+
+.wporg-events-comment-list .comment-author {
+	align-items: center;
+	display: flex;
+	font-weight: 600;
+	gap: 10px;
+}
+
+.wporg-events-comment-list .avatar {
+	border-radius: 50%;
+	display: block;
+}
+
+.wporg-events-comment-list .comment-metadata,
+.wporg-events-comment-list .comment-awaiting-moderation {
+	color: var(--wporg-events-muted);
+	font-size: 14px;
+}
+
+.wporg-events-comment-list .comment-content > :first-child {
+	margin-top: 0;
+}
+
+.wporg-events-comment-list .comment-content > :last-child {
+	margin-bottom: 0;
+}
+
+.wporg-events-comment-list .reply {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.wporg-events-comment-list .children {
+	border-left: 1px solid var(--wporg-events-border);
+	display: grid;
+	gap: 16px;
+	margin: 16px 0 0 20px;
+	padding-left: 20px;
+}
+
+.wporg-events-comment-form .comment-form-comment {
+	display: grid;
+	gap: 4px;
+}
+
+.wporg-events-comment-form .comment-form-author,
+.wporg-events-comment-form .comment-form-email,
+.wporg-events-comment-form .comment-form-url {
+	display: grid;
+	gap: 4px;
+}
+
+.wporg-events-comment-form input[type="email"],
+.wporg-events-comment-form input[type="text"],
+.wporg-events-comment-form input[type="url"],
+.wporg-events-comment-form textarea {
+	background: var(--wporg-events-surface);
+	border: 1px solid #8c8f94;
+	border-radius: 2px;
+	color: var(--wporg-events-ink);
+	font: inherit;
+	padding: 8px 10px;
+	width: 100%;
+}
+
+.wporg-events-comment-form textarea {
+	min-height: 120px;
+}
+
+.wporg-events-comment-form .form-submit {
+	margin-bottom: 0;
+}
+
+.wporg-events-comment-form .submit {
+	background: var(--wporg-events-blue);
+	border: 1px solid var(--wporg-events-blue);
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 600;
+	min-height: 44px;
+	padding: 10px 16px;
+}
+
+.wporg-events-comment-form .submit:hover {
+	background: var(--wporg-events-blue-dark);
+	border-color: var(--wporg-events-blue-dark);
+}
+
+.wporg-events-status {
+	color: var(--wporg-events-green-dark);
+	font-size: 14px;
+	min-height: 1.2em;
+}
+
+.wporg-events-empty {
+	background: var(--wporg-events-canvas);
+	border: 1px solid var(--wporg-events-border);
+	border-left: 3px solid var(--wporg-events-green);
+	border-radius: 2px;
+	color: var(--wporg-events-muted);
+	padding: 20px 24px;
+}
+
+@media (max-width: 960px) {
+	.wporg-events-detail__body {
+		display: block;
+	}
+
+	.wporg-events-detail__body > * + * {
+		margin-top: 28px;
+	}
+}
+
+@media (max-width: 720px) {
+	.wporg-events-main {
+		padding: 32px 20px 56px;
+	}
+
+	.wporg-events-hero {
+		margin: -32px calc(50% - 50vw) 40px !important;
+		padding: 40px 20px 36px;
+	}
+
+	.wporg-events-hero h1 {
+		font-size: 42px;
+	}
+
+	.wporg-events-detail h1 {
+		font-size: 48px;
+		line-height: 1.08;
+	}
+
+	.wporg-events-hero p {
+		font-size: 18px;
+	}
+
+	.wporg-events-section {
+		margin-top: 40px !important;
+	}
+
+	.wporg-events-section + .wporg-events-section {
+		padding-top: 40px;
+	}
+
+	.wporg-events-section__header {
+		align-items: stretch;
+		display: grid;
+	}
+
+	.wporg-events-toolbar,
+	.wporg-events-segmented,
+	.wporg-events-filter-bar {
+		width: 100%;
+	}
+
+	.wporg-events-segmented button {
+		flex: 1;
+	}
+
+	.wporg-events-dashboard-item {
+		display: grid;
+	}
+
+	.wporg-events-dashboard-item__actions {
+		justify-items: start;
+	}
+
+	.wporg-events-panel,
+	.wporg-events-card {
+		padding: 20px;
+	}
+
+	.wporg-events-review-item__summary {
+		display: grid;
+	}
+
+	.wporg-events-review-form {
+		grid-template-columns: 1fr;
+	}
+
+	.wporg-events-card__layout {
+		display: grid;
+	}
+
+	.wporg-events-date-badge {
+		grid-template-columns: auto auto;
+		height: auto;
+		justify-self: start;
+		justify-content: start;
+		min-width: 74px;
+		width: auto;
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"name": "wporg-events",
+	"version": "0.1.0",
+	"description": "Theme for WordPress.org Events",
+	"author": "WordPress.org",
+	"license": "GPL-2.0-or-later",
+	"private": true,
+	"scripts": {
+		"format": "wp-scripts format ."
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.22.0"
+	}
+}
