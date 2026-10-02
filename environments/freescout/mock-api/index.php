@@ -195,7 +195,7 @@ $blocks = match ( $endpoint ) {
 			array(
 				'title'  => $user,
 				'url'    => 'https://wordpress.slack.com/',
-				'badges' => array( badge( 'Active', 'success' ) ),
+				'badges' => array(),
 				'meta'   => array( array( 'text' => 'Updated 2026-01-01' ) ),
 			),
 			array(
