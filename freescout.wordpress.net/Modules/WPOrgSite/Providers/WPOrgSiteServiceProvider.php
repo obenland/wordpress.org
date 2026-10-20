@@ -17,6 +17,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 use Modules\WPOrgSite\Http\Middleware\LockModules;
 use Modules\WPOrgSite\Services\AltConversation;
+use Modules\WPOrgSite\Services\ConversationTextSearch;
 use Modules\WPOrgSite\Services\EnvSettings;
 use Modules\WPOrgSite\Services\PinnedNote;
 use Modules\WPOrgSite\Services\UserChoice;
@@ -97,6 +98,8 @@ final class WPOrgSiteServiceProvider extends ServiceProvider {
 				return $styles;
 			}
 		);
+
+		\Eventy::addFilter( 'api.conversations.query', array( ConversationTextSearch::class, 'filter' ), 20, 2 );
 
 		\Eventy::addFilter(
 			'javascripts',
